@@ -1,5 +1,7 @@
 # Changelog
 
+- Added DiscordRoleFilter feature and settings
+
 ## 5.1.0
 - Remove email scope requirement, use username+discriminator instead by @xcrf in #63
 - Show a shinny error on duplicated account by @warlof in #66
