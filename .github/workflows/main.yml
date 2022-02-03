@@ -5,6 +5,7 @@ on:
     branches: [ 5.0.x ]
   pull_request:
     branches: [ 5.0.x ]
+  workflow_dispatch:
 
 jobs:
   code-climate:
@@ -37,6 +38,7 @@ jobs:
         run: ./vendor/bin/phpunit
 
       - name: Send report to Code Climate
+        if: github.repository == 'warlof/seat-discord-connector'
         run: ./test-reporter-latest-linux-amd64 after-build -t clover -r ${{ secrets.CC_REPORTER_ID }}
   codacy:
     runs-on: ubuntu-latest
@@ -60,6 +62,7 @@ jobs:
         run: ./vendor/bin/phpunit
 
       - name: Run codacy-coverage-reporter
+        if: github.repository == 'warlof/seat-discord-connector'
         uses: codacy/codacy-coverage-reporter-action@master
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
